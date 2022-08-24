@@ -25,7 +25,13 @@ function onFormSubmit (e) {
     const message = JSON.parse(saveMessage);
     e.currentTarget.reset();
     localStorage.removeItem(STORAGE_KEY);
-    console.log(message);
+    try {  
+        if(message) {   
+            console.log(message);
+        }
+    } catch (err) {
+        
+    }
 }
 
 function onTextareaInput (e) {
@@ -37,12 +43,20 @@ function populateTextarea() {
     const form = document.querySelector(".feedback-form");
     const saveMessage = localStorage.getItem(STORAGE_KEY);
     const formData = JSON.parse(saveMessage);
-    console.log(formData.email);
-    console.log(formData.message)
-    if(formData.email) {   
-        form.email.value = formData.email;
-    }
-    if(formData.message) {   
-        form.message.value = formData.message;
-    }
+    // console.log(formData.email);
+    // console.log(formData.message)
+    try {
+        if(formData.email) {   
+            form.email.value = formData.email;
+        }
+    } catch (err) {
+      
+      }
+      try {
+        if(formData.message) {   
+            form.message.value = formData.message;
+        }
+    } catch (err) {
+      
+      }
 }
