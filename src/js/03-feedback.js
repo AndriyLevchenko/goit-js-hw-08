@@ -32,6 +32,8 @@ function onFormSubmit (e) {
     } catch (err) {
         
     }
+    delete formData.email;
+    delete formData.message;
 }
 
 function onTextareaInput (e) {
@@ -43,8 +45,6 @@ function populateTextarea() {
     const form = document.querySelector(".feedback-form");
     const saveMessage = localStorage.getItem(STORAGE_KEY);
     const formData = JSON.parse(saveMessage);
-    // console.log(formData.email);
-    // console.log(formData.message)
     try {
         if(formData.email) {   
             form.email.value = formData.email;
